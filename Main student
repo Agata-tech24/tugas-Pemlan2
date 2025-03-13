@@ -1,0 +1,86 @@
+import java.util.Scanner;
+
+public class MainStudent {
+    public static void main(String[] args) {
+        Scanner scanner = new Scanner(System.in);
+
+        // Membuat objek student dengan constructor lengkap
+        Student kiw = new Student("Anna", "Malang", 20, 100, 89, 80);
+        kiw.displayMessage();
+
+        System.out.println("===============");
+
+        // Membuat objek student lainnya
+        Student kiw2 = new Student("Chris", "Kediri", 21, 70, 60, 90);
+        kiw2.displayMessage();
+
+        System.out.println("===============");
+
+        // Mengubah informasi objek kiw dengan constructor baru
+        kiw = new Student("Anna", "Batu", 18, 85, 75, 80);
+        kiw.displayMessage();
+
+        System.out.println("===============");
+
+        // Mengubah informasi objek kiw2 dengan setter method
+        kiw2.setAddress("Surabaya");
+        kiw2.setAge(22);
+        kiw2.displayMessage();
+
+        System.out.println("===============");
+
+        // Membuat objek lain dengan constructor
+        Student kiw3 = new Student("Budi", "Yogyakarta", 19, 75, 80, 90);
+        kiw3.displayMessage();
+
+        System.out.println("===============");
+        Student.jumlahObjek(); // Menampilkan jumlah objek yang dibuat
+
+        // Meminta jumlah siswa dari user
+        System.out.print("\nBerapa jumlah siswa yang ingin dimasukkan? ");
+        int jumlahSiswa = scanner.nextInt();
+        scanner.nextLine(); // Membuang newline
+
+        // Array untuk menyimpan objek Student
+        Student[] siswaArray = new Student[jumlahSiswa];
+
+        for (int i = 0; i < jumlahSiswa; i++) {
+            System.out.println("\nMasukkan data siswa ke-" + (i + 1));
+
+            System.out.print("Nama: ");
+            String nama = scanner.nextLine();
+
+            System.out.print("Alamat: ");
+            String alamat = scanner.nextLine();
+
+            System.out.print("Umur: ");
+            int umur = scanner.nextInt();
+
+            System.out.print("Nilai Matematika: ");
+            double math = scanner.nextDouble();
+
+            System.out.print("Nilai IPA: ");
+            double science = scanner.nextDouble();
+
+            System.out.print("Nilai Bahasa Inggris: ");
+            double english = scanner.nextDouble();
+            scanner.nextLine(); // Membuang newline
+
+            // Membuat objek Student dengan input dari user
+            siswaArray[i] = new Student(nama, alamat, umur, math, science, english);
+        }
+
+        // Menampilkan data semua siswa yang dimasukkan oleh user
+        System.out.println("\n===== DATA SISWA =====");
+        for (int i = 0; i < jumlahSiswa; i++) {
+            siswaArray[i].displayMessage();
+            System.out.println("===============");
+        }
+
+        // Menampilkan jumlah objek Student yang telah dibuat
+        Student.jumlahObjek();
+
+        // Menutup scanner
+        scanner.close();
+    }
+}
